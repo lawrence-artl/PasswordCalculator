@@ -11,6 +11,11 @@ namespace passwordcalc
     {
         static void Main(string[] args)
         {
+            
+            //This is a test comment
+
+
+            
             //Console.SetWindowSize(120, 20);
             //variables
             string password = "";   //sets string password as blank
