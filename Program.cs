@@ -68,7 +68,7 @@ namespace passwordcalc
             Console.WriteLine("\nPress 'ENTER' to Exit."); Console.ReadLine();
 
         }
-        static string TypePW(string password)
+        /*static string TypePW(string password)
         {
             Console.Write("Type in your pASSword:");
             //string yourpassword = "";   //for testing only
@@ -114,6 +114,8 @@ namespace passwordcalc
             //Console.Write("\n" + yourpassword); //for testing only
             return fullpassword;                //return the modified password
         }
+
+        */
         static int StrngLngth(string pass)
         {
             int length = pass.Length;   //find the length of the password
@@ -145,13 +147,14 @@ namespace passwordcalc
         {
             //suggest ways to make the password stronger based on length and characters used
         }
-        public static void WordWrap(string origtext)
+        
+        /*public static void WordWrap(string origtext)
         {
             //variables
             int window_width = Console.WindowWidth - 1;
             /*  get width of the window
                 must subtract '1' bc a line that goes to the very edge of the window
-                makes a blank line below */
+                makes a blank line below 
             //string origtext = Console.ReadLine();                   //get input from user
             string text = origtext + " ";                           //append 1 space to end of text
             string line = " ";                                      //create string called 'line' for storage of substrings
@@ -179,7 +182,7 @@ namespace passwordcalc
                 else
                 { }
             }
-        }
+        } */
 
         public static void TestPW(String password, int characterset, double combinations)
         {
@@ -231,10 +234,16 @@ namespace passwordcalc
 
 
             Console.WriteLine("Your password has the following structure: " + password);
-            String paragraph = "Based on it's structure, a computer would have to test " + readablecombinations + " combinations of characters " +
+
+            Paragraph phrase = new Paragraph();
+            phrase.Phrase = "Based on it's structure, a computer would have to test " + readablecombinations + " combinations of characters " +
                 "in order to Brute Force your password. This would take a cloud-network of 10,000 computers, trying " +
                 "1 million passwords per second, about " + readabletime + " " + timeunits + ".";
-            WordWrap(paragraph);
+
+            phrase.Wrap();
+            
+            
+            //WordWrap(paragraph);
             Console.Write("");
         }
 
