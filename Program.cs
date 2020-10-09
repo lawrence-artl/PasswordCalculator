@@ -2,6 +2,7 @@
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Collections.Generic;
+using passwordcalc.engines;
 
 
 
@@ -43,10 +44,19 @@ namespace passwordcalc
                 { words.lowerletters = "letter"; }
             }
 
-            paragraph = "Your password is " + StrngLngth(password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
+            Paragraph output = new Paragraph();
+
+
+            output.Phrase = "Your password is " + StrngLngth(password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
                 ", " + passwordprops[2] + " uppercase " + words.upperletters + ", and " + passwordprops[3] + " lowercase " + words.lowerletters + ".";
+
+            output.Wrap();
+            
             Console.WriteLine("\n\nPASSWORD INFORMATION:");
-            WordWrap(paragraph);
+            
+
+            //WordWrap(paragraph);
+            
             Console.WriteLine("\nPress 'ENTER' to test..."); Console.ReadLine();
             TestPW(password, characterset, combinations);
             Console.WriteLine("\nPress 'ENTER' to Exit."); Console.ReadLine();
