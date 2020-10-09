@@ -20,22 +20,28 @@ namespace passwordcalc
             //Console.SetWindowSize(120, 20);
             //variables
             string password = "";   //sets string password as blank
-            string paragraph = "";  //information paragraph string
+            //string paragraph = "";  //information paragraph string
             int[] passwordprops = { 0, 0, 0, 0 };
-            var words = (characters: "characters", numbers: "numbers", upperletters: "letters", lowerletters: "letters");
+            var words = (characters: "special characters", numbers: "numbers", upperletters: "letters", lowerletters: "letters");
             int[] passwordset = { 0, 0, 0, 0 }; //array for totals of character sets
             int characterset = 0;
 
             //start program
-            password = TypePW(password);    //call function to type passwword
-            PWDeconstruct(passwordprops, passwordset, password); //passes passwordprops by ref automatically for arrays
+
+            Privacy psswrd = new Privacy();
+            psswrd.Password = psswrd.TypePW();
+
+            //password = TypePW(password);    //call function to type passwword
+            
+            
+            PWDeconstruct(passwordprops, passwordset, psswrd.Password); //passes passwordprops by ref automatically for arrays
             for (int i = 0; i < 4; i++)
             { characterset += passwordset[i]; }
-            double combinations = PasswordCombinations(characterset, password); //stores the total number of possible combinations based on 
+            double combinations = PasswordCombinations(characterset, psswrd.Password); //stores the total number of possible combinations based on 
                                                                                 //character sets used and password length
             {
                 if (passwordprops[0] == 1)      //use these functions to modify the output of the password information sentence
-                { words.characters = "character"; }
+                { words.characters = "special character"; }
                 if (passwordprops[1] == 1)
                 { words.numbers = "number"; }
                 if (passwordprops[2] == 1)
@@ -43,14 +49,14 @@ namespace passwordcalc
                 if (passwordprops[3] == 1)
                 { words.lowerletters = "letter"; }
             }
+            Console.WriteLine(psswrd.Password);
+            Paragraph output = new Paragraph();     //create paragraph object
 
-            Paragraph output = new Paragraph();
-
-
-            output.Phrase = "Your password is " + StrngLngth(password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
+            output.Phrase = "Your password is " + StrngLngth(psswrd.Password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
                 ", " + passwordprops[2] + " uppercase " + words.upperletters + ", and " + passwordprops[3] + " lowercase " + words.lowerletters + ".";
 
-            output.Wrap();
+            Console.WriteLine();
+            output.Wrap();                          //wrap paragraph object
             
             Console.WriteLine("\n\nPASSWORD INFORMATION:");
             
@@ -58,13 +64,13 @@ namespace passwordcalc
             //WordWrap(paragraph);
             
             Console.WriteLine("\nPress 'ENTER' to test..."); Console.ReadLine();
-            TestPW(password, characterset, combinations);
+            TestPW(psswrd.Password, characterset, combinations);
             Console.WriteLine("\nPress 'ENTER' to Exit."); Console.ReadLine();
 
         }
         static string TypePW(string password)
         {
-            Console.Write("Type in your password:");
+            Console.Write("Type in your pASSword:");
             //string yourpassword = "";   //for testing only
             string newpassword = "";
             string fullpassword = "";
