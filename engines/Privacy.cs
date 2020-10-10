@@ -6,9 +6,9 @@ namespace passwordcalc.engines
 {
     class Privacy
     {
-        public string Password;
+        //public string Password;
 
-        public string TypePW()
+        public static string TypePW()
         {
             
             Console.Write("Type in your password:");
