@@ -5,20 +5,20 @@ namespace passwordcalc.engines
 {
 	public class Paragraph
 	{
-		public string Phrase;
+		//public string Phrase;
 
-		public void Wrap()
+		public static void Wrap(string Phrase)
 		{
             //Console.WriteLine("\nUSING CLASS OUTSIDE PROGRAM\n");
-            
-            
+
+            Console.WriteLine();
             //variables
             int window_width = Console.WindowWidth - 1;
             /*  get width of the window
                 must subtract '1' bc a line that goes to the very edge of the window
                 makes a blank line below */
             //string origtext = Console.ReadLine();                   //get input from user
-            string text = Phrase + " ";                           //append 1 space to end of text
+            string text = Phrase + " ";                             //append 1 space to end of text
             string line = " ";                                      //create string called 'line' for storage of substrings
             int string_length = text.Length;                        //get length of full text input
             int total_lines = string_length / window_width;         //find total lines that text takes up

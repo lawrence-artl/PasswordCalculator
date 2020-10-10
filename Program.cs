@@ -42,19 +42,12 @@ namespace passwordcalc
             }
             Paragraph output = new Paragraph();     //create paragraph object
 
-            
-            
-            output.Phrase = "Your password is " + StrngLngth(password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
+            string paragraph = "Your password is " + StrngLngth(password) + " character(s) long, and contains " + passwordprops[0] + " " + words.characters + ", " + passwordprops[1] + " " + words.numbers +
                 ", " + passwordprops[2] + " uppercase " + words.upperletters + ", and " + passwordprops[3] + " lowercase " + words.lowerletters + ".";
 
-            Console.WriteLine();
-            Console.WriteLine("\n\nPASSWORD INFORMATION:");
-            output.Wrap();                          //wrap paragraph object
-            
-            
-            
 
-            
+            Console.WriteLine("\n\nPASSWORD INFORMATION:");
+            Paragraph.Wrap(paragraph);  //wrap paragraph object
             
             Console.WriteLine("\nPress 'ENTER' to test..."); Console.ReadLine();
             TestPW(password, characterset, combinations);
@@ -228,12 +221,12 @@ namespace passwordcalc
 
             Console.WriteLine("Your password has the following structure: " + password);
 
-            Paragraph phrase = new Paragraph();
-            phrase.Phrase = "Based on it's structure, a computer would have to test " + readablecombinations + " combinations of characters " +
+            
+            string phrase = "Based on it's structure, a computer would have to test " + readablecombinations + " combinations of characters " +
                 "in order to Brute Force your password. This would take a cloud-network of 10,000 computers, trying " +
                 "1 million passwords per second, about " + readabletime + " " + timeunits + ".";
 
-            phrase.Wrap();
+            Paragraph.Wrap(phrase);
             
             
             
